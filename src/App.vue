@@ -2,7 +2,18 @@
   <div>
     <!-- 부모컴포넌트에서 값을 자식컴포넌트로 
     내려주고 data를 부모 컴포넌트에서 관리하는 방식 -->
-    <TodoInput :item="todoTxt" @input="updateTodoText" @add="addTodoItem" />
+    <TodoInput
+      :item="todoTxt"
+      @inputEvent="updateTodoText"
+      @add="addTodoItem"
+    />
+    <!-- v-model로 사용할경우 @input: value 로 사용해야함 -->
+    <TodoInput
+      v-model="test"
+      :item="test"
+      @inputEvent="updateVmodel"
+      @add="addTodoItem"
+    />
   </div>
 </template>
 
@@ -15,6 +26,7 @@ export default defineComponent({
   data() {
     return {
       todoTxt: '',
+      test: '',
     };
   },
   methods: {
@@ -28,6 +40,9 @@ export default defineComponent({
     },
     initTodoText() {
       this.todoText = '';
+    },
+    updateVmodel(val: string) {
+      this.test = val;
     },
   },
 });

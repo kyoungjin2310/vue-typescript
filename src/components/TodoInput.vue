@@ -11,11 +11,14 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   props: {
-    item: String,
+    item: {
+      type: String,
+      required: true,
+    },
   },
   methods: {
-    handleInput(e: any) {
-      this.$emit('input', e.target.value);
+    handleInput(event: any) {
+      this.$emit('inputEvent', event.target.value);
     },
     addTodo() {
       this.$emit('add');
