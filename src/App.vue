@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TodoInput />
+    <TodoInput :item="todoTxt" @input="updateTodoText" />
   </div>
 </template>
 
@@ -9,10 +9,17 @@ import { defineComponent } from 'vue';
 import TodoInput from './components/TodoInput.vue';
 
 export default defineComponent({
-  setup() {
-    return {};
-  },
   components: { TodoInput },
+  data() {
+    return {
+      todoTxt: '',
+    };
+  },
+  methods: {
+    updateTodoText(val: string) {
+      this.todoTxt = val;
+    },
+  },
 });
 </script>
 

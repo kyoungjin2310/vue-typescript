@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "strict": true,
+    //strict - any ts type error
+    // "strict": true,
     "jsx": "preserve",
     "moduleResolution": "node",
     "skipLibCheck": true,
