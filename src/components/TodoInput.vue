@@ -18,10 +18,8 @@ export default defineComponent({
   },
   methods: {
     handleInput(event: InputEvent) {
-      if (event.target) {
-        return;
-      }
-      this.$emit('inputEvent', event.target.value);
+      const eventTarget = event.target as HTMLInputElement;
+      this.$emit('inputEvent', eventTarget.value);
     },
     addTodo() {
       this.$emit('add');
