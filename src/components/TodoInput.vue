@@ -17,7 +17,10 @@ export default defineComponent({
     },
   },
   methods: {
-    handleInput(event: any) {
+    handleInput(event: InputEvent) {
+      if (event.target) {
+        return;
+      }
       this.$emit('inputEvent', event.target.value);
     },
     addTodo() {
