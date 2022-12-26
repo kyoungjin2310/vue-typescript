@@ -20,7 +20,11 @@
       />
       <div>
         <ul>
-          <TodoListItem />
+          <TodoListItem
+            v-for="(item, index) in todoItems"
+            :key="index"
+            :item="item"
+          />
           <li>아이템 1</li>
           <li>아이템 2</li>
           <li>아이템 3</li>
