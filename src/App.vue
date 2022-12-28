@@ -23,6 +23,7 @@
           <TodoListItem
             v-for="(item, index) in todoItems"
             :key="index"
+            :index="index"
             :item="item"
             @delete="removeTodoItem"
           />
@@ -80,7 +81,10 @@ export default defineComponent({
     fetchTodoItems() {
       this.todoItems = storage.fetch();
     },
-    removeTodoItem() {},
+    removeTodoItem(index: number) {
+      this.todoItems.splice(index, 1);
+      storage.save(this.todoItems);
+    },
   },
   created() {
     this.fetchTodoItems();

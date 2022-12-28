@@ -11,10 +11,11 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   props: {
     item: String,
+    index: Number,
   },
   methods: {
     removeItem() {
-      this.$emit('delete');
+      this.$emit('delete', this.index);
     },
   },
 });
