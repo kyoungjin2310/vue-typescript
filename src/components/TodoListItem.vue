@@ -1,5 +1,8 @@
 <template>
-  <li>{{ item }}</li>
+  <li>
+    <span>{{ item }}</span>
+    <button @click="$emit('delete')">삭제</button>
+  </li>
 </template>
 
 <script lang="ts">
