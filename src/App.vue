@@ -24,10 +24,8 @@
             v-for="(item, index) in todoItems"
             :key="index"
             :item="item"
+            @delete="removeTodoItem"
           />
-          <li>아이템 1</li>
-          <li>아이템 2</li>
-          <li>아이템 3</li>
         </ul>
       </div>
     </main>
@@ -82,6 +80,7 @@ export default defineComponent({
     fetchTodoItems() {
       this.todoItems = storage.fetch();
     },
+    removeTodoItem() {},
   },
   created() {
     this.fetchTodoItems();
