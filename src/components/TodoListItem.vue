@@ -6,11 +6,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { Todo } from '@/App.vue';
+import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
   props: {
-    item: String,
+    //vue에서 props type을 정의하는 방식 - PropType<generic>
+    item: Object as PropType<Todo>,
     index: Number,
   },
   methods: {

@@ -38,6 +38,11 @@ import { defineComponent } from 'vue';
 import TodoInput from './components/TodoInput.vue';
 import TodoListItem from './components/TodoListItem.vue';
 
+export interface Todo {
+  title: string;
+  done: boolean;
+}
+
 const STORAGE_KEY = 'vue-todo-ts-vi';
 const storage = {
   save(todos: string[]) {
@@ -58,7 +63,7 @@ export default defineComponent({
     return {
       todoTxt: '',
       test: '',
-      todoItems: [],
+      todoItems: [] as Todo[],
     };
   },
   methods: {
@@ -68,7 +73,11 @@ export default defineComponent({
     addTodoItem() {
       const val = this.todoText;
       // localStorage.setItem(val, val);
-      this.todoItems.push(val);
+      const todo: Todo = {
+        title: val,
+        done: false,
+      };
+      this.todoItems.push(todo);
       storage.save(this.todoItems);
       this.initTodoText();
     },
