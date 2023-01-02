@@ -19,7 +19,7 @@ export default defineComponent({
   },
   computed: {
     todoItemClass(): string {
-      return this.todoItem.done && 'complete';
+      return this.item.done && 'complete';
     },
   },
   methods: {
