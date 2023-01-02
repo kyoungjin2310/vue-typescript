@@ -1,11 +1,8 @@
 <template>
   <li>
-    <span
-      class="list-item"
-      :class="item.done && 'complete'"
-      @click="toggleItem"
-      >{{ item.title }}</span
-    >
+    <span class="list-item" :class="todoItemClass" @click="toggleItem">{{
+      item.title
+    }}</span>
     <button @click="removeItem">삭제</button>
   </li>
 </template>
@@ -19,6 +16,11 @@ export default defineComponent({
     //vue에서 props type을 정의하는 방식 - PropType<generic>
     item: Object as PropType<Todo>,
     index: Number,
+  },
+  computed: {
+    todoItemClass(): string {
+      return this.todoItem.done && 'complete';
+    },
   },
   methods: {
     removeItem() {
