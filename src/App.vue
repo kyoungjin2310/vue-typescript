@@ -12,12 +12,12 @@
         @add="addTodoItem"
       />
       <!-- v-model로 사용할경우 @input: value 로 사용해야함 -->
-      <TodoInput
+      <!-- <TodoInput
         v-model="test"
         :item="test"
         @inputEvent="updateVmodel"
         @add="addTodoItem"
-      />
+      /> -->
       <div>
         <ul>
           <TodoListItem
