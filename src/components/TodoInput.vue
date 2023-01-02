@@ -22,7 +22,7 @@ export default defineComponent({
       this.$emit('inputEvent', eventTarget.value);
     },
     addTodo() {
-      this.$emit('add');
+      this.$emit('add', this.item);
     },
   },
 });

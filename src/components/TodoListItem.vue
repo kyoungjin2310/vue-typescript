@@ -1,6 +1,11 @@
 <template>
   <li>
-    <span class="list-item complete">{{ item }}</span>
+    <span
+      class="list-item"
+      :class="item.done && 'complete'"
+      @click="toggleItem"
+      >{{ item.title }}</span
+    >
     <button @click="removeItem">삭제</button>
   </li>
 </template>
@@ -18,6 +23,9 @@ export default defineComponent({
   methods: {
     removeItem() {
       this.$emit('delete', this.index);
+    },
+    toggleItem() {
+      this.$emit('toggle', this.item, this.index);
     },
   },
 });

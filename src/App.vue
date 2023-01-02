@@ -25,6 +25,7 @@
             :key="index"
             :index="index"
             :item="item"
+            @toggle="toggleTodoItemComplete"
             @delete="removeTodoItem"
           />
         </ul>
@@ -67,14 +68,14 @@ export default defineComponent({
     };
   },
   methods: {
-    updateTodoText(val: string[]) {
+    updateTodoText(val: string) {
       this.todoTxt = val;
     },
-    addTodoItem() {
-      const val = this.todoText;
+    addTodoItem(val) {
       // localStorage.setItem(val, val);
+      this.todoText = val;
       const todo: Todo = {
-        title: val,
+        title: this.todoText,
         done: false,
       };
       this.todoItems.push(todo);
@@ -92,6 +93,13 @@ export default defineComponent({
     },
     removeTodoItem(index: number) {
       this.todoItems.splice(index, 1);
+      storage.save(this.todoItems);
+    },
+    toggleTodoItemComplete(todoItem: Todo, index: number) {
+      this.todoItems.splice(index, 1, {
+        ...todoItem,
+        done: !todoItem.done,
+      });
       storage.save(this.todoItems);
     },
   },
