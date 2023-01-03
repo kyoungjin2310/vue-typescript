@@ -46,11 +46,11 @@ export interface Todo {
 
 const STORAGE_KEY = 'vue-todo-ts-vi';
 const storage = {
-  save(todos: string[]) {
+  save(todos: Todo[]) {
     const parse = JSON.stringify(todos);
     localStorage.setItem(STORAGE_KEY, parse);
   },
-  fetch() {
+  fetch(): Todo[] {
     //localStorage는 json이라 빈배열을 string으로 바꿔줌
     const todoItems = localStorage.getItem(STORAGE_KEY) || '[]';
     const result = JSON.parse(todoItems);
@@ -68,6 +68,19 @@ export default defineComponent({
     };
   },
   methods: {
+    //ordering(정렬) - sort이용
+    // 클경우 : 1, 작을경우 : -1
+    fatchTodoItems() {
+      this.todoItems = storage.fetch().sort((a, b) => {
+        if (a.title < b.title) {
+          return -1;
+        }
+        if (a.title > b.title) {
+          return 1;
+        }
+        return 0;
+      });
+    },
     updateTodoText(val: string) {
       this.todoTxt = val;
     },
