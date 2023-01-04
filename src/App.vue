@@ -67,6 +67,9 @@ export default defineComponent({
       todoItems: [] as Todo[],
     };
   },
+  created() {
+    this.fetchTodoItems();
+  },
   methods: {
     //ordering(정렬) - sort이용
     // 클경우 : 1, 작을경우 : -1
@@ -115,9 +118,6 @@ export default defineComponent({
       });
       storage.save(this.todoItems);
     },
-  },
-  created() {
-    this.fetchTodoItems();
   },
 });
 </script>
